@@ -1,26 +1,88 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Figure drawing app</title>
-        <link rel="stylesheet" type="text/css" href="main.css" media="screen">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- <link rel="icon" href="icon.png"> -->
-    <body id="screen">
-        <div class="test">
-            <div id="inputs">
-                <input type="file" id="fileInput" multiple>
-                <button id="buttonRun" onclick="fTrigger()">Run</button>
-            </div>
-            <br>
-            <div class="series-container">
-                <input type="number" value="20" min="1" max="100">
-                <input type="range" value="2" oninput="fTimeValue(this)" min="0" max="10">
-                <label for="timeSlider">1:00</label>
-            </div>
-        </div>
-        <br>
-        <img id="outputImage" src="" alt="Select an image">
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Figure drawing app</title>
+    <link rel="stylesheet" type="text/css" href="main.css" media="screen">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="icon" href="icon.png"> -->
+  </head>
+  <body>
+    <div id="inputs">
+        <input type="file" id="fileInput" accept="image/png, image/jpeg" multiple>
+        <button id="buttonRun" onclick="fTrigger()">Run</button>
+    </div>
 
-    <script src="main.js" type="text/javascript"></script>
+    <ul>
+      <li class="series-container">
+        <div class="series-slider">
+          <input class="slider-input" type="range" min="1" value="20" max="100" oninput="fIterValue(this)">
+          <label class="slider-label isRight">20</label>
+        </div>
+        Iterations
+        <br>
+        <br>
+        <div class="series-slider">
+          <input class="slider-input" type="range" min="0" value="2" max="30" oninput="fTimeValue(this)">
+          <label class="slider-label isRight">1:00</label>
+        </div>
+        Pose Length
+      </li>
+      <br>
+      <li class="series-container">
+        <div class="series-slider">
+          <input class="slider-input" type="range" min="1" value="20" max="100" oninput="fIterValue(this)">
+          <label class="slider-label isRight">20</label>
+        </div>
+        Iterations
+        <br>
+        <br>
+        <div class="series-slider">
+          <input class="slider-input" type="range" min="0" value="2" max="30" oninput="fTimeValue(this)">
+          <label class="slider-label isRight">1:00</label>
+        </div>
+        Pose Length
+      </li>
+    </ul>
+
+    <div id="overlay-container">
+      <nav class="menu">
+        <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>
+        <label class="menu-open-button" for="menu-open">
+          <span class="dash dash-1"></span>
+          <span class="dash dash-2"></span>
+          <span class="dash dash-3"></span>
+        </label>
+        
+        <a href="#" class="menu-item"> <i class="fa fa-bar-chart"></i> </a>
+        <a href="#" class="menu-item" onclick="fStopSlide()"> <i class="fa fa-plus"></i> </a>
+        <a href="#" class="menu-item" onclick="fSkipSlide()"> <i class="fa fa-heart"></i> </a>
+        
+        <!-- pause/play, stop, skip -->
+      </nav>
+      <img id="outputImage" src="" alt="">
+    </div>
+    
+    <!-- SVG filters for the overlay menu -->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+          <filter id="shadowed-goo">
+              
+              <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+              <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
+              <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
+              <feOffset in="shadow" dx="1" dy="1" result="shadow" />
+              <feComposite in2="shadow" in="goo" result="goo" />
+              <feComposite in2="goo" in="SourceGraphic" result="mix" />
+          </filter>
+          <filter id="goo">
+              <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+              <feComposite in2="goo" in="SourceGraphic" result="mix" />
+          </filter>
+        </defs>
+    </svg>
+  </body>
+  <script  src="main.js"></script>
 </html>

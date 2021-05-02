@@ -1,6 +1,7 @@
 //***Function scripts
 
 var oOut = document.getElementById('outputImage');
+var oOverlay = document.getElementById('overlay-container');
 let aImagesAux = [];
 let aImages = [];
 var oFiles;
@@ -18,7 +19,10 @@ function fTrigger(){
     oFiles  = document.getElementById('fileInput').files;
 
     if(oFiles.length!=0){
-        //Filters all the files and inputs the indexes of valid options in an array
+        //Sets the canvas overlay to opaque
+        oOverlay.style.display = 'flex';
+
+        //Makes sure the image filter worked in the input and puts the entries in an array
         for (i=0; i < oFiles.length; i++){
             if (oFiles[i].type.includes("image/")){aImages.push(i);};
         };
@@ -29,7 +33,7 @@ function fTrigger(){
         fCallSeries();
     }
     else{
-        oOut.src = '';
+        //Idk, say something on the screen.
     };
 };
 
@@ -42,7 +46,6 @@ function fDisplayRand(oImage){
 };
 
 //Biased randomizer that doesn't repeat images twice.
-//Fuck JS, why do they make me use .slice() to make it so I can copy the contents for the fucking array? Why is the norm a1 = a2 making a pointer to the same memory ID!?
 function fBiasedRand(vRange){
     if (aImagesAux.length==0){aImagesAux = shuffleArray(aImages).slice()};
     return aImagesAux.pop();
@@ -67,56 +70,103 @@ function fSeries(vIterations, vPeriod){
 function fCallSeries() {
     if (vSeriesCount != 0){
         var vIndex = oSeries.length - vSeriesCount;
-        var vSec = oSeries[vIndex].firstElementChild.nextElementSibling.value;
+        var oSeriesSliders = oSeries[vIndex].getElementsByClassName("series-slider");
+        var vIte = oSeriesSliders[0].firstElementChild.value;
+        var vSec = oSeriesSliders[1].firstElementChild.value;
 
         switch (vSec) {
             case '0':
-                vSec = 30;break;
+                vSec = 2;break;
             case '1':
-                vSec = 45;break;
+                vSec = 3;break;
             default:
                 vSec = vSec*30;break;
         };
 
-        fSeries(oSeries[vIndex].firstElementChild.value,vSec);
+        fSeries(vIte,vSec);
         vSeriesCount--;
     }
     else {
+        oOverlay.style.display = 'none';
         oOut.src = '';
     };
 };
 
-//Shamelessly copied this, don't even care. I did this logic three times and it didn't work because of the stupid .slice() to copy the contents of the array
-function shuffleArray(array) {
-    let curId = array.length;
-     while (0 !== curId) {
-        let randId = Math.floor(Math.random() * curId);
-        curId -= 1;
-        let tmp = array[curId];
-        array[curId] = array[randId];
-        array[randId] = tmp;
+//For randomizing the array
+function shuffleArray(vArray) {
+    let vCurId = vArray.length;
+     while (0 !== vCurId) {
+        let vRandId = Math.floor(Math.random() * vCurId);
+        vCurId -= 1;
+        let vTmp = vArray[vCurId];
+        vArray[vCurId] = vArray[vRandId];
+        vArray[vRandId] = vTmp;
     };
-    return array;
+    return vArray;
 };
+
+//This is the exit function from the slide for the menu
+function fStopSlide(){
+    oOverlay.style.display = 'none';
+    oOut.src = '';
+    clearInterval(oInterval);
+    document.getElementById('menu-open').checked = false;
+}
 
 //***Visual scripts
 
-//Function for displaying the number of seconds in the label after the slider
-//This works dynamically, so I can create several sliders so to make class timers
+var vSide = "right";
+
+//Function to display the time of each pose inside the container
 function fTimeValue(oSlider){
-    var vLabelText
-    switch (oSlider.value) {
-        case '0':
-            vLabelText = '0:30';break;
-        case '1':
-            vLabelText = '0:45';break;
-        default:
-            if (oSlider.value%2 == 0) {
-                vLabelText = (oSlider.value)/2+':00';
-            }
-            else {
-                vLabelText = (oSlider.value-1)/2+':30';
-            };break;
-    };
-    oSlider.nextElementSibling.innerHTML = vLabelText;
+  var vLabel = oSlider.nextElementSibling;
+  var vValue = oSlider.value;
+  var vMiddle = oSlider.max/2;
+  
+  switch (vValue) {
+      case '0':
+          vLabel.innerHTML = '0:30';break;
+      case '1':
+          vLabel.innerHTML = '0:45';break;
+      default:
+          if (oSlider.value%2 == 0) {
+            vLabel.innerHTML = (oSlider.value)/2+':00';
+          }
+          else {
+            vLabel.innerHTML = (oSlider.value-1)/2+':30';
+          };break;
+  };
+  
+  //This part is for switching from one side to another of the container
+  if(vValue > vMiddle && vSide == "right") {
+    vSide = "left";
+    vLabel.classList.toggle("isRight");
+    vLabel.classList.toggle("isLeft");
+    
+  } else if(vValue <= vMiddle && vSide == "left") {
+    vSide = "right";
+    vLabel.classList.toggle("isRight");
+    vLabel.classList.toggle("isLeft");
+  };
 };
+
+//Function to display the number of poses inside the container
+function fIterValue(oSlider){
+  var vLabel = oSlider.nextElementSibling;
+  var vValue = oSlider.value;
+  var vMiddle = oSlider.max/2;
+
+  vLabel.innerHTML = vValue;
+
+  //This part is for switching from one side to another of the container
+  if(vValue > vMiddle && vSide == "right") {
+    vSide = "left";
+    vLabel.classList.toggle("isRight");
+    vLabel.classList.toggle("isLeft");
+    
+  } else if(vValue <= vMiddle && vSide == "left") {
+    vSide = "right";
+    vLabel.classList.toggle("isRight");
+    vLabel.classList.toggle("isLeft");
+  };
+}
