@@ -76,9 +76,9 @@ function fCallSeries() {
 
         switch (vSec) {
             case '0':
-                vSec = 2;break;
+                vSec = 30;break;
             case '1':
-                vSec = 3;break;
+                vSec = 45;break;
             default:
                 vSec = vSec*30;break;
         };
