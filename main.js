@@ -9,6 +9,11 @@ var vCount  = 0;
 var oSeries;
 var vSeriesCount;
 var oInterval;
+var vItCount
+var oNextImageContainer = document.getElementById('image-end');
+var oImageEndBg = document.getElementById('image-end-bg');
+var gvIterations;
+var gvPeriod;
 
 //Script that triggers the slideshow calls
 function fTrigger(){
@@ -21,6 +26,7 @@ function fTrigger(){
     if(oFiles.length!=0){
         //Sets the canvas overlay to opaque
         oOverlay.style.display = 'flex';
+        fInitClock();
 
         //Makes sure the image filter worked in the input and puts the entries in an array
         for (i=0; i < oFiles.length; i++){
@@ -33,7 +39,7 @@ function fTrigger(){
         fCallSeries();
     }
     else{
-        //Idk, say something on the screen.
+        //Idk, say something on the screen about the user missing the files.
     };
 };
 
@@ -47,23 +53,36 @@ function fDisplayRand(oImage){
 
 //Biased randomizer that doesn't repeat images twice.
 function fBiasedRand(vRange){
-    if (aImagesAux.length==0){aImagesAux = shuffleArray(aImages).slice()};
+    if (aImagesAux.length==0){aImagesAux = fShuffleArray(aImages).slice()};
     return aImagesAux.pop();
 };
 
 //Displays a given amount of pictures, each for a given amount of seconds
 function fSeries(vIterations, vPeriod){
+    gvIterations = vIterations;
+    gvPeriod =  vPeriod;
 
-    //Displays first image
-    fDisplayRand(oFiles[aImages[fBiasedRand(aImages.length)]]);
+    if (vItCount == vIterations){
+        fCallSeries();
+    }
+    else {
+        vItCount++;
+        fDisplayRand(oFiles[aImages[fBiasedRand(aImages.length)]]);
 
-    //Display subsequent ones
-    oInterval = setInterval(function(){
-        fDisplayRand(oFiles[aImages[fBiasedRand(aImages.length)]])
-    }, vPeriod*1000);
+        fStartClock(vPeriod);
+    };
+};
 
-    //Stops the slideshow after a number of iterations and calls the next series
-    setTimeout(function(){clearInterval(oInterval);fCallSeries()}, vIterations*(vPeriod)*1000-100);
+function fFadeWhite() {
+    oNextImageContainer.style.display = 'flex';
+    setTimeout(function(){oImageEndBg.style.opacity = '40%';oNextImageContainer.style.opacity = '100%'},1000);
+};
+
+function fNextImage(){
+    fSeries(gvIterations,gvPeriod);
+    oNextImageContainer.style.opacity = '0%';
+    oImageEndBg.style.opacity = '0%';
+    setTimeout(function(){oNextImageContainer.style.display = 'none';},1000);
 };
 
 //This is the main function of the program as it defines how the series are processed
@@ -83,6 +102,7 @@ function fCallSeries() {
                 vSec = vSec*30;break;
         };
 
+        vItCount = 0;
         fSeries(vIte,vSec);
         vSeriesCount--;
     }
@@ -93,7 +113,7 @@ function fCallSeries() {
 };
 
 //For randomizing the array
-function shuffleArray(vArray) {
+function fShuffleArray(vArray) {
     let vCurId = vArray.length;
      while (0 !== vCurId) {
         let vRandId = Math.floor(Math.random() * vCurId);
@@ -107,10 +127,14 @@ function shuffleArray(vArray) {
 
 //This is the exit function from the slide for the menu
 function fStopSlide(){
+    oNextImageContainer.style.display = 'none';
+    oNextImageContainer.style.opacity = '0%';
+    oImageEndBg.style.opacity = '0%';
     oOverlay.style.display = 'none';
     oOut.src = '';
     clearInterval(oInterval);
     document.getElementById('menu-open').checked = false;
+    fStopClock();
 }
 
 //***Visual scripts

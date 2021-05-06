@@ -54,12 +54,30 @@
           <span class="dash dash-3"></span>
         </label>
         
-        <a href="#" class="menu-item"> <i class="fa fa-bar-chart"></i> </a>
-        <a href="#" class="menu-item" onclick="fStopSlide()"> <i class="fa fa-plus"></i> </a>
-        <a href="#" class="menu-item" onclick="fSkipSlide()"> <i class="fa fa-heart"></i> </a>
+        <a class="menu-item pause" onClick="fButtonToggle(this)"> <i class="fa fa-bar-chart"></i> </a>
+        <a class="menu-item" onclick="fStopSlide()"> <i class="fa fa-plus"></i> </a>
+        <a class="menu-item" onclick="fSkipSlide()"> <i class="fa fa-heart"></i> </a>
         
         <!-- pause/play, stop, skip -->
       </nav>
+      <div class="menu-open-button" id="clock-round">
+        <!-- <input type="checkbox" class="menu-open" name="next-image"/> -->
+        <!-- <label > -->
+          <div class="timer-wrapper">
+            <section>          
+              <p id="countdown-timer"></p>
+              <canvas id="countdown-timer-bg"></canvas>
+              <canvas id="countdown-timer-circle"></canvas>
+            </section>
+          </div>
+        <!-- </label> -->
+      </div>
+      <div id="image-end" >
+        <input type="checkbox" class="menu-open" name="next-image"/>
+        <label class="menu-open-button" for="next-image" id="next-image" onclick="fNextImage()"></label>
+        <div id="image-end-bg"></div>
+      </div>
+      
       <img id="outputImage" src="" alt="">
     </div>
     
@@ -85,4 +103,5 @@
     </svg>
   </body>
   <script  src="main.js"></script>
+  <script  src="clock.js"></script>
 </html>
