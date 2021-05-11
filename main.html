@@ -10,39 +10,109 @@
   <body>
     <div id="inputs">
         <input type="file" id="fileInput" accept="image/png, image/jpeg" multiple>
-        <button id="buttonRun" onclick="fTrigger()">Run</button>
+        <div>
+          <button onclick="fAddSeries()">Add series</button>
+          <button id="buttonRun" onclick="fTrigger()">Run</button>
+        </div>
     </div>
 
-    <ul>
+    <ul id="series">
       <li class="series-container">
-        <div class="series-slider">
-          <input class="slider-input" type="range" min="1" value="20" max="100" oninput="fIterValue(this)">
-          <label class="slider-label isRight">20</label>
+        <div>
+          <div class="series-slider">
+            <input class="slider-input" type="range" min="1" value="14" max="100" oninput="fIterValue(this)">
+            <label class="slider-label isRight">14</label>
+          </div>
+          Iterations
+          <br>
+          <br>
+          <div class="series-slider">
+            <input class="slider-input" type="range" min="0" value="0" max="30" oninput="fTimeValue(this)">
+            <label class="slider-label isRight">0:30</label>
+          </div>
+          Pose Length
         </div>
-        Iterations
-        <br>
-        <br>
-        <div class="series-slider">
-          <input class="slider-input" type="range" min="0" value="2" max="30" oninput="fTimeValue(this)">
-          <label class="slider-label isRight">1:00</label>
+        <div>
+          <button class="rm-button" onclick="fRemoveSeries(this)">Remove</button>
         </div>
-        Pose Length
       </li>
-      <br>
       <li class="series-container">
-        <div class="series-slider">
-          <input class="slider-input" type="range" min="1" value="20" max="100" oninput="fIterValue(this)">
-          <label class="slider-label isRight">20</label>
+        <div>
+          <div class="series-slider">
+            <input class="slider-input" type="range" min="1" value="10" max="100" oninput="fIterValue(this)">
+            <label class="slider-label isRight">10</label>
+          </div>
+          Iterations
+          <br>
+          <br>
+          <div class="series-slider">
+            <input class="slider-input" type="range" min="0" value="1" max="30" oninput="fTimeValue(this)">
+            <label class="slider-label isRight">0:45</label>
+          </div>
+          Pose Length
         </div>
-        Iterations
-        <br>
-        <br>
-        <div class="series-slider">
-          <input class="slider-input" type="range" min="0" value="2" max="30" oninput="fTimeValue(this)">
-          <label class="slider-label isRight">1:00</label>
+        <div>
+          <button class="rm-button" onclick="fRemoveSeries(this)">Remove</button>
         </div>
-        Pose Length
       </li>
+      <li class="series-container">
+        <div>
+          <div class="series-slider">
+            <input class="slider-input" type="range" min="1" value="7" max="100" oninput="fIterValue(this)">
+            <label class="slider-label isRight">7</label>
+          </div>
+          Iterations
+          <br>
+          <br>
+          <div class="series-slider">
+            <input class="slider-input" type="range" min="0" value="2" max="30" oninput="fTimeValue(this)">
+            <label class="slider-label isRight">1:00</label>
+          </div>
+          Pose Length
+        </div>
+        <div>
+          <button class="rm-button" onclick="fRemoveSeries(this)">Remove</button>
+        </div>
+      </li>
+      <li class="series-container">
+        <div>
+          <div class="series-slider">
+            <input class="slider-input" type="range" min="1" value="3" max="100" oninput="fIterValue(this)">
+            <label class="slider-label isRight">3</label>
+          </div>
+          Iterations
+          <br>
+          <br>
+          <div class="series-slider">
+            <input class="slider-input" type="range" min="0" value="6" max="30" oninput="fTimeValue(this)">
+            <label class="slider-label isRight">3:00</label>
+          </div>
+          Pose Length
+        </div>
+        <div>
+          <button class="rm-button" onclick="fRemoveSeries(this)">Remove</button>
+        </div>
+      </li>
+      <li class="series-container">
+        <div>
+          <div class="series-slider">
+            <input class="slider-input" type="range" min="1" value="1" max="100" oninput="fIterValue(this)">
+            <label class="slider-label isRight">1</label>
+          </div>
+          Iterations
+          <br>
+          <br>
+          <div class="series-slider">
+            <input class="slider-input" type="range" min="0" value="10" max="30" oninput="fTimeValue(this)">
+            <label class="slider-label isRight">5:00</label>
+          </div>
+          Pose Length
+        </div>
+        <div>
+          <button class="rm-button" onclick="fRemoveSeries(this)">Remove</button>
+        </div>
+      </li>
+
     </ul>
 
     <div id="overlay-container">

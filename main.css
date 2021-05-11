@@ -63,6 +63,7 @@ ul {
   text-align: center;
   font-size: 14px;
   color: var(--text-color);
+  padding: 0;
 }
 html ul {
   text-align: left;
@@ -75,8 +76,22 @@ li {
   border-radius: 10px;
 }
 
+/* Series ------------------------------------------------------------------ */
 
-/* Series sliders ------------------------------------------------------ */
+/* Series container */
+.series-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+/* Remove button */
+.rm-button {
+  height: 100%;
+}
+
+
+/* Series sliders */
 
 .series-slider {
   display: inline-block;
@@ -122,6 +137,13 @@ html .series-slider:active .slider-label {
   -webkit-transition-delay: 0;
 }
 
+
+/* Inputs container */
+
+#inputs {
+  display: flex;
+  justify-content: space-between;
+}
 
 /* Input */
 

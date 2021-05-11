@@ -10,9 +10,9 @@ var minutes,
     display = document.querySelector('#countdown-timer');
 
 // Variables for Canvas
-var sAngle = 1.5,
-	eAngle = 1.5,
-	circleTime, // needed to have full set up time, to have correct circle ending angle
+var sAngle = 1.5, 		//This is the variable dictating where the arc will start. 0 (as in 0 Rad) implies that it's at 3 o' clock, and 1.5 is 3/4 of a turn, or 12 o' clock.
+	eAngle = 1.5, 		//This is the current angle variable, and it should start at 1.5 as well.
+	circleTime, 		//Needed to have full set up time, to have correct circle ending angle
 	displayTimerElem,
 	radius;
 
@@ -40,7 +40,7 @@ function startWorkTimer(){
 			display.textContent = minutes + ':' + seconds;
 
 			vTimerDuration = vGlobalTime;
-			fStopClock();
+			setTimeout(function(){fStopClock()}, 1000);
 		} 
 		else{
 			vTimerDuration--;
@@ -66,7 +66,7 @@ function drawCircle(){
 		contextCircle.beginPath();
 		
 		contextCircle.arc(centerCircleX, centerCircleY, radius, sAngle * Math.PI, eAngle * Math.PI, false);
-		contextCircle.strokeStyle = 'rgb(0, 103, 125)';
+		contextCircle.strokeStyle = 'rgb(0, 103, 125)'; //This is the color of the progress arc in the clock.
 		contextCircle.lineWidth = vLineWidth;
 		contextCircle.stroke();
 		contextCircle.restore();

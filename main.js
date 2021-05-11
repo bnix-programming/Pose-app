@@ -137,6 +137,54 @@ function fStopSlide(){
     fStopClock();
 }
 
+function fSkipSlide(){
+    vItCount--;
+    fFadeWhite();
+    clearInterval(timerInterval);
+    display.textContent = minutes + ':' + seconds;
+
+    vTimerDuration = vGlobalTime;
+    setTimeout(function(){fStopClock()}, 1000);
+}
+
+function fRemoveSeries (iSeries){
+    iSeries.parentElement.parentElement.remove();
+}
+
+function fAddSeries () {
+    var lvContainer = document.getElementById("series"),
+        lvText = '',
+        lvNode = document.createElement("li");
+    
+    lvNode.classList.add('series-container');
+
+    // lvText += '<li class="series-container">';
+        lvText += '<div>';
+            lvText += '<div class="series-slider">';
+                lvText += '<input class="slider-input" type="range" min="1" value="20" max="100" oninput="fIterValue(this)">';
+                lvText += '<label class="slider-label isRight">20</label>';
+            lvText += '</div>';
+            lvText += ' Iterations ';
+            lvText += '<br>';
+            lvText += '<br>';
+            lvText += '<div class="series-slider">';
+                lvText += '<input class="slider-input" type="range" min="0" value="2" max="30" oninput="fTimeValue(this)">';
+                lvText += '<label class="slider-label isRight">1:00</label>';
+            lvText += '</div>';
+            lvText += ' Pose Length ';
+        lvText += '</div>';
+        lvText += '<div>';
+            lvText += '<button class="rm-button" onclick="fRemoveSeries(this)">Remove</button>';
+        lvText += '</div>';
+    // lvText += '</li>';
+
+    lvNode.innerHTML = lvText;
+
+    lvContainer.appendChild(lvNode);
+    
+    // lvContainer.innerHTML = lvText;
+}
+
 //***Visual scripts
 
 var vSide = "right";
