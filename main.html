@@ -19,18 +19,29 @@
     <ul id="series">
       <li class="series-container">
         <div>
-          <div class="series-slider">
-            <input class="slider-input" type="range" min="1" value="14" max="100" oninput="fIterValue(this)">
-            <label class="slider-label isRight">14</label>
+          <div class="series-lines">
+            <div class="series-buttons" onclick="fIncreaseCount(this)"><div>&#708;</div></div>
+            <div class="series-slider">
+              <input class="slider-input" type="range" min="1" value="10" max="100" oninput="fIterValue(this)">
+              <label class="slider-label isRight">10</label>
+            </div>
+            <div class="series-buttons" onclick="fDecreaseCount(this)"><div>&#709;</div></div>
+            <div>
+              &nbsp;Iterations
+            </div>
           </div>
-          Iterations
           <br>
-          <br>
-          <div class="series-slider">
-            <input class="slider-input" type="range" min="0" value="0" max="30" oninput="fTimeValue(this)">
-            <label class="slider-label isRight">0:30</label>
+          <div class="series-lines">
+            <div class="series-buttons time" onclick="fIncreaseCount(this)"><div>&#708;</div></div>
+            <div class="series-slider">
+              <input class="slider-input" type="range" min="0" value="0" max="30" oninput="fTimeValue(this)">
+              <label class="slider-label isRight">0:30</label>
+            </div>
+            <div class="series-buttons time" onclick="fDecreaseCount(this)"><div>&#709;</div></div>
+            <div>
+              &nbsp;Pose Length
+            </div>
           </div>
-          Pose Length
         </div>
         <div>
           <button class="rm-button" onclick="fRemoveSeries(this)">Remove</button>
@@ -38,18 +49,29 @@
       </li>
       <li class="series-container">
         <div>
-          <div class="series-slider">
-            <input class="slider-input" type="range" min="1" value="10" max="100" oninput="fIterValue(this)">
-            <label class="slider-label isRight">10</label>
+          <div class="series-lines">
+            <div class="series-buttons" onclick="fIncreaseCount(this)"><div>&#708;</div></div>
+            <div class="series-slider">
+              <input class="slider-input" type="range" min="1" value="5" max="100" oninput="fIterValue(this)">
+              <label class="slider-label isRight">5</label>
+            </div>
+            <div class="series-buttons" onclick="fDecreaseCount(this)"><div>&#709;</div></div>
+            <div>
+              &nbsp;Iterations
+            </div>
           </div>
-          Iterations
           <br>
-          <br>
-          <div class="series-slider">
-            <input class="slider-input" type="range" min="0" value="1" max="30" oninput="fTimeValue(this)">
-            <label class="slider-label isRight">0:45</label>
+          <div class="series-lines">
+            <div class="series-buttons time" onclick="fIncreaseCount(this)"><div>&#708;</div></div>
+            <div class="series-slider">
+              <input class="slider-input" type="range" min="0" value="2" max="30" oninput="fTimeValue(this)">
+              <label class="slider-label isRight">1:00</label>
+            </div>
+            <div class="series-buttons time" onclick="fDecreaseCount(this)"><div>&#709;</div></div>
+            <div>
+              &nbsp;Pose Length
+            </div>
           </div>
-          Pose Length
         </div>
         <div>
           <button class="rm-button" onclick="fRemoveSeries(this)">Remove</button>
@@ -57,18 +79,29 @@
       </li>
       <li class="series-container">
         <div>
-          <div class="series-slider">
-            <input class="slider-input" type="range" min="1" value="7" max="100" oninput="fIterValue(this)">
-            <label class="slider-label isRight">7</label>
+          <div class="series-lines">
+            <div class="series-buttons" onclick="fIncreaseCount(this)"><div>&#708;</div></div>
+            <div class="series-slider">
+              <input class="slider-input" type="range" min="1" value="2" max="100" oninput="fIterValue(this)">
+              <label class="slider-label isRight">2</label>
+            </div>
+            <div class="series-buttons" onclick="fDecreaseCount(this)"><div>&#709;</div></div>
+            <div>
+              &nbsp;Iterations
+            </div>
           </div>
-          Iterations
           <br>
-          <br>
-          <div class="series-slider">
-            <input class="slider-input" type="range" min="0" value="2" max="30" oninput="fTimeValue(this)">
-            <label class="slider-label isRight">1:00</label>
+          <div class="series-lines">
+            <div class="series-buttons time" onclick="fIncreaseCount(this)"><div>&#708;</div></div>
+            <div class="series-slider">
+              <input class="slider-input" type="range" min="0" value="10" max="30" oninput="fTimeValue(this)">
+              <label class="slider-label isRight">5:00</label>
+            </div>
+            <div class="series-buttons time" onclick="fDecreaseCount(this)"><div>&#709;</div></div>
+            <div>
+              &nbsp;Pose Length
+            </div>
           </div>
-          Pose Length
         </div>
         <div>
           <button class="rm-button" onclick="fRemoveSeries(this)">Remove</button>
@@ -76,57 +109,101 @@
       </li>
       <li class="series-container">
         <div>
-          <div class="series-slider">
-            <input class="slider-input" type="range" min="1" value="3" max="100" oninput="fIterValue(this)">
-            <label class="slider-label isRight">3</label>
+          <div class="series-lines">
+            <div class="series-buttons" onclick="fIncreaseCount(this)"><div>&#708;</div></div>
+            <div class="series-slider">
+              <input class="slider-input" type="range" min="1" value="1" max="100" oninput="fIterValue(this)">
+              <label class="slider-label isRight">1</label>
+            </div>
+            <div class="series-buttons" onclick="fDecreaseCount(this)"><div>&#709;</div></div>
+            <div>
+              &nbsp;Iterations
+            </div>
           </div>
-          Iterations
           <br>
-          <br>
-          <div class="series-slider">
-            <input class="slider-input" type="range" min="0" value="6" max="30" oninput="fTimeValue(this)">
-            <label class="slider-label isRight">3:00</label>
+          <div class="series-lines">
+            <div class="series-buttons time" onclick="fIncreaseCount(this)"><div>&#708;</div></div>
+            <div class="series-slider">
+              <input class="slider-input" type="range" min="0" value="20" max="30" oninput="fTimeValue(this)">
+              <label class="slider-label isLeft">10:00</label>
+            </div>
+            <div class="series-buttons time" onclick="fDecreaseCount(this)"><div>&#709;</div></div>
+            <div>
+              &nbsp;Pose Length
+            </div>
           </div>
-          Pose Length
         </div>
         <div>
           <button class="rm-button" onclick="fRemoveSeries(this)">Remove</button>
         </div>
       </li>
-      <li class="series-container">
-        <div>
-          <div class="series-slider">
-            <input class="slider-input" type="range" min="1" value="1" max="100" oninput="fIterValue(this)">
-            <label class="slider-label isRight">1</label>
-          </div>
-          Iterations
-          <br>
-          <br>
-          <div class="series-slider">
-            <input class="slider-input" type="range" min="0" value="10" max="30" oninput="fTimeValue(this)">
-            <label class="slider-label isRight">5:00</label>
-          </div>
-          Pose Length
-        </div>
-        <div>
-          <button class="rm-button" onclick="fRemoveSeries(this)">Remove</button>
-        </div>
-      </li>
-
     </ul>
 
     <div id="overlay-container">
       <nav class="menu">
-        <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>
+        <input type="checkbox" class="menu-open" name="menu-open" id="menu-open"/>
         <label class="menu-open-button" for="menu-open">
           <span class="dash dash-1"></span>
           <span class="dash dash-2"></span>
           <span class="dash dash-3"></span>
         </label>
         
-        <a class="menu-item pause" onClick="fButtonToggle(this)"> <i class="fa fa-bar-chart"></i> </a>
-        <a class="menu-item" onclick="fStopSlide()"> <i class="fa fa-plus"></i> </a>
-        <a class="menu-item" onclick="fSkipSlide()"> <i class="fa fa-heart"></i> </a>
+        <a class="menu-item pause" onClick="fButtonToggle(this)"> <i class="bt bt-playpause pause"></i>
+
+            <!-- Play button -->
+          <div class="hidden">
+            <?xml version="1.0" encoding="utf-8"?>
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+              <style type="text/css">
+                .st0{fill:#f6f4e8;}
+              </style>
+              <g>
+                <path class="st0" d="M89.43,40.85L21.14,1.43C14.11-2.63,5.29,2.44,5.29,10.58v78.84c0,8.13,8.81,13.22,15.85,9.15l68.28-39.42 C96.47,55.08,96.47,44.92,89.43,40.85z"/>
+              </g>
+            </svg> 
+          </div>
+
+          <div class="">
+            <!-- Pause button -->
+            <?xml version="1.0" encoding="utf-8"?>
+              <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+              <style type="text/css">
+                .st0{fill:#f6f4e8;}
+              </style>
+              <g>
+                <path class="st0" d="M32.04,100h-4.71c-4.38,0-7.93-3.55-7.93-7.93V7.93C19.4,3.56,22.94,0,27.33,0h4.71 c4.38,0,7.93,3.55,7.93,7.93v84.13C39.98,96.45,36.42,100,32.04,100z"/>
+                <path class="st0" d="M73.03,100h-3.61c-4.18,0-7.57-3.39-7.57-7.57V7.57c0-4.18,3.39-7.57,7.57-7.57h3.61 c4.18,0,7.57,3.39,7.57,7.57v84.85C80.6,96.61,77.21,100,73.03,100z"/>
+              </g>
+            </svg>
+          </div>
+        </a>
+        <a class="menu-item" onclick="fStopSlide()"> <i class="bt bt-stop"></i>
+          <div>
+            <?xml version="1.0" encoding="utf-8"?>
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+              <style type="text/css">
+                .st0{fill:#f6f4e8;}
+              </style>
+              <g>
+                <path class="st0" d="M85.85,100H14.15C6.37,100,0,93.63,0,85.85V14.15C0,6.37,6.37,0,14.15,0h71.69C93.63,0,100,6.37,100,14.15 v71.69C100,93.62,93.63,100,85.85,100z"/>
+              </g>
+            </svg>
+          </div>
+        </a>
+        <a class="menu-item" onclick="fSkipSlide()"> <i class="bt bt-skip"></i> 
+          <div>
+            <?xml version="1.0" encoding="utf-8"?>
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+              <style type="text/css">
+                .st0{fill:#f6f4e8;}
+              </style>
+              <g>
+                <path class="st0" d="M81.31,88.44L81.31,88.44c-2.76,0-5-1.72-5-3.85V15.41c0-2.12,2.23-3.85,5-3.85l0,0c2.76,0,5,1.72,5,3.85 v69.19C86.32,86.72,84.07,88.44,81.31,88.44z"/>
+                <path class="st0" d="M78.37,42.97l-52.5-30.31c-5.41-3.13-12.19,0.78-12.19,7.03v60.62c0,6.25,6.78,10.17,12.19,7.03l52.5-30.31 C83.78,53.91,83.78,46.09,78.37,42.97z"/>
+              </g>
+            </svg>
+          </div>
+        </a>
         
         <!-- pause/play, stop, skip -->
       </nav>
@@ -144,7 +221,17 @@
       </div>
       <div id="image-end" >
         <input type="checkbox" class="menu-open" name="next-image"/>
-        <label class="menu-open-button" for="next-image" id="next-image" onclick="fNextImage()"></label>
+        <label class="menu-open-button" for="next-image" id="next-image" onclick="fNextImage()">
+          <?xml version="1.0" encoding="utf-8"?>
+          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+            <style type="text/css">
+              .st0{fill:#f6f4e8;}
+            </style>
+            <g>
+              <path class="st0" d="M89.43,40.85L21.14,1.43C14.11-2.63,5.29,2.44,5.29,10.58v78.84c0,8.13,8.81,13.22,15.85,9.15l68.28-39.42 C96.47,55.08,96.47,44.92,89.43,40.85z"/>
+            </g>
+          </svg> 
+        </label>
         <div id="image-end-bg"></div>
       </div>
       

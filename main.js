@@ -158,36 +158,66 @@ function fAddSeries () {
     
     lvNode.classList.add('series-container');
 
-    // lvText += '<li class="series-container">';
-        lvText += '<div>';
+    lvText += '<div>';
+        lvText += '<div class="series-lines">';
+            lvText += '<div class="series-buttons" onclick="fIncreaseCount(this)"><div>&#708;</div></div>';
             lvText += '<div class="series-slider">';
-                lvText += '<input class="slider-input" type="range" min="1" value="20" max="100" oninput="fIterValue(this)">';
-                lvText += '<label class="slider-label isRight">20</label>';
+                lvText += '<input class="slider-input" type="range" min="1" value="5" max="100" oninput="fIterValue(this)">';
+                lvText += '<label class="slider-label isRight">5</label>';
             lvText += '</div>';
-            lvText += ' Iterations ';
-            lvText += '<br>';
-            lvText += '<br>';
+            lvText += '<div class="series-buttons" onclick="fDecreaseCount(this)"><div>&#709;</div></div>';
+            lvText += '<div>';
+                lvText += '&nbsp;Iterations';
+            lvText += '</div>';
+        lvText += '</div>';
+        lvText += '<br>';
+        lvText += '<div class="series-lines">';
+            lvText += '<div class="series-buttons time" onclick="fIncreaseCount(this)"><div>&#708;</div></div>';
             lvText += '<div class="series-slider">';
                 lvText += '<input class="slider-input" type="range" min="0" value="2" max="30" oninput="fTimeValue(this)">';
                 lvText += '<label class="slider-label isRight">1:00</label>';
             lvText += '</div>';
-            lvText += ' Pose Length ';
+            lvText += '<div class="series-buttons time" onclick="fDecreaseCount(this)"><div>&#709;</div></div>';
+            lvText += '<div>';
+                lvText += '&nbsp;Pose Length';
+            lvText += '</div>';
         lvText += '</div>';
-        lvText += '<div>';
-            lvText += '<button class="rm-button" onclick="fRemoveSeries(this)">Remove</button>';
-        lvText += '</div>';
-    // lvText += '</li>';
+    lvText += '</div>';
+    lvText += '<div>';
+        lvText += '<button class="rm-button" onclick="fRemoveSeries(this)">Remove</button>';
+    lvText += '</div>';
 
     lvNode.innerHTML = lvText;
 
     lvContainer.appendChild(lvNode);
-    
-    // lvContainer.innerHTML = lvText;
-}
+};
+
+function fIncreaseCount(iButton){
+    var vSlider = iButton.nextElementSibling.firstElementChild;
+    vSlider.value ++;
+
+    if (iButton.classList.contains('time')){
+        fTimeValue(vSlider);
+    }
+    else {
+        fIterValue(vSlider);
+    };
+};
+
+function fDecreaseCount(iButton){
+    var vSlider = iButton.previousElementSibling.firstElementChild
+    vSlider.value --;
+
+    if (iButton.classList.contains('time')){
+        fTimeValue(vSlider);
+    }
+    else {
+        fIterValue(vSlider);
+    };
+};
 
 //***Visual scripts
 
-var vSide = "right";
 
 //Function to display the time of each pose inside the container
 function fTimeValue(oSlider){
@@ -210,13 +240,11 @@ function fTimeValue(oSlider){
   };
   
   //This part is for switching from one side to another of the container
-  if(vValue > vMiddle && vSide == "right") {
-    vSide = "left";
+  if(vValue > vMiddle && vLabel.classList.contains('isRight')) {
     vLabel.classList.toggle("isRight");
     vLabel.classList.toggle("isLeft");
-    
-  } else if(vValue <= vMiddle && vSide == "left") {
-    vSide = "right";
+  } 
+  else if (vValue <= vMiddle && vLabel.classList.contains('isLeft')){
     vLabel.classList.toggle("isRight");
     vLabel.classList.toggle("isLeft");
   };
@@ -231,13 +259,11 @@ function fIterValue(oSlider){
   vLabel.innerHTML = vValue;
 
   //This part is for switching from one side to another of the container
-  if(vValue > vMiddle && vSide == "right") {
-    vSide = "left";
+  if(vValue > vMiddle && vLabel.classList.contains('isRight')) {
     vLabel.classList.toggle("isRight");
     vLabel.classList.toggle("isLeft");
     
-  } else if(vValue <= vMiddle && vSide == "left") {
-    vSide = "right";
+  } else if(vValue <= vMiddle && vLabel.classList.contains('isLeft')) {
     vLabel.classList.toggle("isRight");
     vLabel.classList.toggle("isLeft");
   };

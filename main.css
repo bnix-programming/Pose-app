@@ -1,36 +1,43 @@
 /* Global ------------------------------------------------------ */
 :root{
-  --text-color: #545454;
+  --turquoise: #18b7be;
+  --turquoise-highlight: #56d6dc;
+  --dark-turquoise: #178ca4;
+  --off-white: #f9f7f0;
+  --deep-blue: #072a40;
+
+  --text-color: var(--off-white);
   --active-slider-label: #161616;
-  --slider-round-rim: #5a5a5a;
-  --slider-round-inner: #cccccc;
-  --slider-background: #aeaeae;
-  --menu-color: #32b2dc;
-  --menu-highlight: #85e1ff;
-  --menu-icon: white;
-  --menu-items: white;
-  --series-bg: #c5c5c5;
-  --next-image-button-color: #ffffff9e;
-  --clock-round-color: #32b2dc;
-  --countdown-numbers-color: white;
+  --slider-round-rim: var(--turquoise);
+  --slider-round-inner: var(--off-white);
+  --slider-background: var(--turquoise);
+  --menu-color: var(--turquoise);
+  --menu-highlight: var(--turquoise-highlight);
+  --menu-icon: var(--off-white);
+  --menu-items: var(--off-white);
+  --series-bg: var(--dark-turquoise);
+  --next-image-button-color: #2dbfc79e;
+  --clock-round-color: var(--turquoise);
+  --countdown-numbers-color: var(--off-white);
+  --buttons-bg: var(--deep-blue);
+  --buttons-hover: var(--off-white);
+  --buttons-hover-text: var(--deep-blue);
 }
 html {
   height: 100%;
   font:62.5%/1 "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
-  background: #dcdcdc;
+  background: var(--off-white);
 }
 
 body {
   display: flex;
   flex-direction: column;
   margin: 0;
-  width: 100vw;
   height: 100vh;
   padding: 50px;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   text-align: center;
-  overflow: hidden;
   text-align: center;      
 }
 
@@ -70,7 +77,6 @@ html ul {
 }
 
 li {
-  /* padding: 5px 0; */
   background-color: var(--series-bg);
   padding: 10px;
   border-radius: 10px;
@@ -96,9 +102,33 @@ li {
 .series-slider {
   display: inline-block;
   position: relative;
-  margin: -4px 6px 0 0;
 }
 
+.series-slider:hover {
+  cursor: default;
+}
+
+.series-buttons {
+  display:flex;
+  height: 20px; 
+  width: 20px; 
+  border-radius: 10px; 
+  background-color: var(--buttons-bg); 
+  align-items: center; 
+  justify-content: center;
+  transition: .4s ease-in-out;
+}
+
+.series-buttons:hover {
+  background-color: var(--buttons-hover);
+  color: var(--buttons-hover-text);
+  user-select: none;
+}
+
+.series-lines {
+  display: flex; 
+  align-items: center;
+}
 
 /* Label */
 
@@ -147,9 +177,19 @@ html .series-slider:active .slider-label {
 
 /* Input */
 
+#fileInput {
+  background-color: var(--series-bg);
+  padding: 20px;
+  border-radius: 10px;
+  appearance: none;
+}
+
+#inputs > input[type="file"] {
+  color: var(--text-color);
+}
+
 html .slider-input {
-  -webkit-appearance: none;
-  position: relative;
+  appearance: none;
   vertical-align: middle;
   width: 100px;
   border-radius: 20px;
@@ -179,7 +219,6 @@ html .slider-input:active::-webkit-slider-thumb {
 /* Overlay ------------------------------------------------------ */
 
 #outputImage{
-  /* display: flex; */
   max-height: 80vh;
   max-width: 80vw;
 }
@@ -202,11 +241,6 @@ html .slider-input:active::-webkit-slider-thumb {
 
 #image-end{
   display: none;
-  /* position: absolute;
-  height: 100%;
-  width: 100%; */
-
-
   position: absolute;
   opacity: 0%;
   height: 100vh;
@@ -232,6 +266,14 @@ html .slider-input:active::-webkit-slider-thumb {
   bottom: initial;
   background: var(--next-image-button-color);
   transition: opacity 1s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#next-image > svg {
+  max-height: 40%;
+  max-width: 40%;
 }
 
 /* Overlay timer */
@@ -242,12 +284,10 @@ html .slider-input:active::-webkit-slider-thumb {
   background: var(--clock-round-color);
   display: flex;
   align-items: center;
-  /* transition: opacity 1s ease-in-out; */
 }
 
 .timer-wrapper{
 	width: 100%;
-	/* padding-top: 100px; */
 }
 
 .timer-wrapper section{
@@ -267,7 +307,6 @@ html .slider-input:active::-webkit-slider-thumb {
 }
 
 #countdown-timer{
-	/* font-family: monospace; */
 	font-size: 1.5em;
 	color: var(--countdown-numbers-color);
 }
@@ -392,4 +431,21 @@ html .slider-input:active::-webkit-slider-thumb {
 .menu-open:checked ~ .menu-item:nth-child(6) {
   transition-duration: 410ms;
   transform: translate3d(320px, 0, 0);
+}
+
+.menu-item div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.menu-item svg {
+  max-height: 40%;
+  max-width: 40%;
+}
+
+.menu-item .hidden {
+  display: none;
 }

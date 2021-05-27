@@ -138,19 +138,25 @@ function fPauseClock(playBtn){
 	isPaused = true;
 	playBtn.classList.toggle('pause');
 	playBtn.classList.toggle('continue');
+	playBtn.lastElementChild.classList.toggle("hidden");
+	playBtn.lastElementChild.previousElementSibling.classList.toggle("hidden");
 }
 
 function fContinueClock(playBtn){
 	isPaused = false;
 	playBtn.classList.toggle('pause');
 	playBtn.classList.toggle('continue');
+	playBtn.lastElementChild.classList.toggle("hidden");
+	playBtn.lastElementChild.previousElementSibling.classList.toggle("hidden");
 };
 
 function fButtonToggle(iBtn){
-	if(iBtn.classList.contains('continue')){
-		fContinueClock(iBtn);
-	}
-	else{
-		fPauseClock(iBtn);
+	if(isStopped == false){
+		if(iBtn.classList.contains('continue')){
+			fContinueClock(iBtn);
+		}
+		else{
+			fPauseClock(iBtn);
+		};
 	};
 };
